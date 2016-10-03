@@ -16,6 +16,10 @@ var UserSchema = new mongoose.Schema({
   breed:String,
   age:String,
   avatar:String,
+  verified:{
+    type:Boolean,
+    default:false
+  },
   meta:{
     createAt:{
       type:Date,

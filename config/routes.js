@@ -8,11 +8,11 @@ module.exports = function(){
   var router = new Router({
     prefix:'/api/1'
   })
-  router.get('/u/signup',User.signup);
-  router.post('/u/verify',User.verify);
-  router.post('/u/update',User.update);
+  router.post('/u/signup',App.hasBody,User.signup);
+  router.post('/u/verify',App.hasBody,User.verify);
+  router.post('/u/update',App.hasBody,App.hasToken,User.update);
 
-  router.post('/signature',App.signature);
+  router.post('/signature',App.hasBody,App.hasToken,App.signature);
 
   return router;
 }
