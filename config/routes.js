@@ -8,7 +8,7 @@ module.exports = function(){
   var router = new Router({
     prefix:'/api/1'
   })
-  router.post('/u/signup',User.signup);
+  router.get('/u/signup',User.signup);
   router.post('/u/verify',User.verify);
   router.post('/u/update',User.update);
 
