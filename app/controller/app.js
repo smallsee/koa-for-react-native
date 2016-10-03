@@ -2,10 +2,32 @@
 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var robot = require('../service/robot');
+var uuid = require('uuid');
 
 exports.signature = function *(next){
+
+  var body = this.request.body;
+  var cloud = body.cloud;
+  var token;
+  var key;
+  var bucket = 'xiaohai-app';
+
+  if (cloud === 'qiniu'){
+    key = uuid.v4() + '.jpeg';
+    token = robot.getQiniuToken(bucket,key)
+  }else{
+    token = robot.getCloudinaryToken(body)
+  }
+
+
+
   this.body = {
-    success: true
+    success: true,
+    data:{
+      token:token,
+      key:key
+    }
   }
 };
 

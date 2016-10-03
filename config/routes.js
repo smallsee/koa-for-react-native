@@ -6,7 +6,7 @@ var App = require('../app/controller/app');
 
 module.exports = function(){
   var router = new Router({
-    prefix:'/api/1'
+    prefix:'/api'
   })
   router.post('/u/signup',App.hasBody,User.signup);
   router.post('/u/verify',App.hasBody,User.verify);

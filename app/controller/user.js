@@ -9,6 +9,7 @@ var uuid = require('uuid'); //生成token
 
 exports.signup = function *(next){
 
+
   var phoneNumber = xss(this.request.body.phoneNumber.trim()); //post请求
   // var phoneNumber = this.query.phoneNumber;  get请求
   var user = yield User.findOne({
