@@ -11,11 +11,13 @@ exports.signature = function *(next){
   var cloud = body.cloud;
   var token;
   var key;
+  var type = body.type;
   var bucket = 'xiaohai-app';
 
   if (cloud === 'qiniu'){
-    key = uuid.v4() + '.jpeg';
-    token = robot.getQiniuToken(bucket,key)
+    var data = robot.getQiniuToken(body);
+     token = data.token;
+     key = data.key
   }else{
     token = robot.getCloudinaryToken(body)
   }
